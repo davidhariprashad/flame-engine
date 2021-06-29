@@ -7,4 +7,5 @@ int main()
 	// test_expected_value();
 	arcane();
 	// test_flame();
+	// absolab();
 }

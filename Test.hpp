@@ -16,11 +16,11 @@ void csv(ForwardIt first, const ForwardIt last, const std::string path, const in
 		throw std::runtime_error("Unable to open file.");
 	}
 	std::cout << "Outputting to " << path << '\n';
-	std::for_each(first, last, [&os, index = 0, sum = 0, cdf = 0.0, iterations](auto& ref) mutable
+	std::for_each(first, last, [&os, index = 0, sum = 0ULL, cdf = 0.0, iterations](const auto& ref) mutable
 	{
 		sum += ref;
 		const double pdf = ref/static_cast<double>(iterations);
-		cdf += pdf;
+		cdf = sum/static_cast<double>(iterations);
 		const double expected_value = 1/(1-cdf);
 		os << index++ << ',' << expected_value << ',' << cdf << ',' << pdf << ',' << ref << '\n';
 	});
@@ -32,5 +32,6 @@ void test_expected_value();
 void gollux();
 void sweetwater();
 void arcane();
+void absolab();
 
 #endif

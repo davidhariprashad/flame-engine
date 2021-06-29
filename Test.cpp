@@ -4,6 +4,7 @@ std::string make_path(const int level, const bool adv, const int64_t iterations)
 {
 	std::stringstream ss;
 	ss << "./output/" << level << '-' << (adv ? "adv" : "nonadv") << '-' << iterations << ".csv";
+	// ss << level << '-' << (adv ? "adv" : "nonadv") << '-' << iterations << ".csv";
 	return ss.str();
 }
 
@@ -61,8 +62,20 @@ void arcane()
 	const int level {200};
 	Nonweapon equip(level);
 	Player doov(0.11, 2.7, 9.5);
-	constexpr int64_t iterations {16'000'000};
-	constexpr int threads {16};
+	constexpr int64_t iterations {320'000'000};
+	constexpr int threads {32};
+	auto h = FlameEngine::make_histogram(equip, doov, FlameMethod::ETERNAL, FlameCriteria::STR, iterations, threads);
+	const std::string path = make_path(level, equip.has_advantage(), iterations);
+	csv(h.cbegin(), h.cend(), path, iterations);
+}
+
+void absolab()
+{
+	const int level {160};
+	Nonweapon equip(level);
+	Player doov(0.11, 2.7, 9.5);
+	constexpr int64_t iterations {320'000'000};
+	constexpr int threads {32};
 	auto h = FlameEngine::make_histogram(equip, doov, FlameMethod::ETERNAL, FlameCriteria::STR, iterations, threads);
 	const std::string path = make_path(level, equip.has_advantage(), iterations);
 	csv(h.cbegin(), h.cend(), path, iterations);
