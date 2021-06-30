@@ -22,7 +22,8 @@ void csv(ForwardIt first, const ForwardIt last, const std::string path, const in
 		const double pdf = ref/static_cast<double>(iterations);
 		cdf = sum/static_cast<double>(iterations);
 		const double expected_value = 1/(1-cdf);
-		os << index++ << ',' << expected_value << ',' << cdf << ',' << pdf << ',' << ref << '\n';
+		// os << index++ << ',' << expected_value << ',' << cdf << ',' << pdf << ',' << ref << '\n';
+		os << index++ << ',' << expected_value << '\n';
 	});
 }
 
@@ -33,5 +34,7 @@ void gollux();
 void sweetwater();
 void arcane();
 void absolab();
+void cra();
+void papulatus();
 
 #endif

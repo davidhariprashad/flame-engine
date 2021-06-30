@@ -23,8 +23,7 @@ FlameEngine::FlameEngine(const Player& p, const FlameMethod m, const FlameCriter
 FlameEngine::ScoreHistogram FlameEngine::make_histogram(const Nonweapon e, const Player p, const FlameMethod m, const FlameCriteria criteria, const int64_t n, const int c)
 {
 	init_instances(c, e, p, m, criteria);
-	ScoreHistogram global_histogram;
-	std::fill(global_histogram.begin(), global_histogram.end(), 0);
+	ScoreHistogram global_histogram{};
 	std::for_each(instances.begin(), instances.end(), [adv = e.has_advantage(), k = n/c](FlameEngine& instance)
 	{
 		instance.start(adv ? &FlameEngine::advantage_nonweapon_worker : &FlameEngine::nonadvantage_nonweapon_worker, k);
@@ -148,7 +147,7 @@ void FlameEngine::choose_effect_tiers(const int effects_count)
 	tiers.resize(effects_count);
 	std::for_each(tiers.begin(), tiers.end(), [this](int& tier)
 	{
-		tier = this->tier_pool[this->rng()];
+		tier = tier_pool[rng()];
 	});
 }
 

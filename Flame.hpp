@@ -6,7 +6,6 @@
 
 #include <iostream>
 #include <array>
-#include <map>
 #include <algorithm>
 
 class Flame

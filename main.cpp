@@ -3,9 +3,10 @@
 
 int main()
 {
-	// gollux();
-	// test_expected_value();
+	gollux();
+	sweetwater();
 	arcane();
-	// test_flame();
-	// absolab();
+	papulatus();
+	cra();
+	absolab();
 }
