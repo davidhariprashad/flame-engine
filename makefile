@@ -11,4 +11,4 @@ obj : $(wildcard *.cpp)
 	$(CXX) -c $(CPPFLAGS) -o foo $(objects)
 
 clean :
-	rm *.o foo
+	rm *.o executable
